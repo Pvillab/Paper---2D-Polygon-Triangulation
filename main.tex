@@ -12,6 +12,8 @@
 \definecolor{dkgreen}{rgb}{0,0.6,0}
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
 \definecolor{mauve}{rgb}{0.58,0,0.82}
+\usepackage{ragged2e}
+
 
 \lstset{frame=tb,
   language=java,
@@ -63,10 +65,13 @@ ibarqueroga@gmail.com, joseph.feng1@gmail.com,paulvillabeita@gmail.com}
     The following document reports the results gathered during the project called "2D Polygon Triangulation" which the main purpose is to triangulate 2-dimensional polygons with 2 different implementations which are using Delaunay-Constrained Polygons and Non-Delaunay ones. After the experimentation phase both implementations were of order $O(n^2)$. The Non-Delaunay polygons are tested with the use of similar polygons but with different amount of vertices.
     
 \section{Introduction}
-Game figures and models that are visible in a computer screen and pretty much any other polygon can be deconstructed into triangles. This process is called \textbf{triangulation}. In the following project, two different implementation are tested. One implementation uses polygons with Delaunay constraints and another one with non-Delaunay polygons. For the triangulation of non-Delaunay polygons, the chosen approach was the Ear Clipping method, for this implementation only 2D and \textbf{simple polygons} are tested. \textbf{Non-simple polygons} are those with one or more vertex are shared among various triangles or edges between two vertices that are intersected by other edge. Also, no additional vertices will be inserted in order to triangulate. The second implementation 
+Game figures and models that are visible in a computer screen and pretty much any other polygon can be deconstructed into triangles. This process is called \textbf{triangulation}. In the following project, two different implementation are tested. One implementation uses polygons with Delaunay constraints and another one with non-Delaunay polygons. For the triangulation of non-Delaunay polygons, the chosen approach was the Ear Clipping method, for this implementation only 2D and \textbf{simple polygons} are tested. On the other hand, Delaunay triangulation is method which makes triangles based on Voronoi Diagrams, used for dividing a plane in sections with a methodology based on euclidean distances. \\
+It is also important to mention that \textbf{non-simple polygons} are those with one or more vertex are shared among various triangles or edges between two vertices that are intersected by other edge. Also, no additional vertices will be inserted in order to triangulate. The second implementation 
 $$\includegraphics[scale=0.7]{nonsimpleExample}$$
 
-\section{Related Work}
+
+\section{Related Work}\justifying
+
 A similar project related to ours is called "Fast Polygon Triangulation Based on Seidel's Algorithm"\cite{relatedProject} conducted by Atul Narkhede and Dinesh Manocha. As the title of the project suggests, the use of the Seidel's Algorithm was key. It uses the structure of undirected, unweighted, and connected graphs. It solves the problem in $O(n*logn)$ with polygons that do not have holes and using a query structure to locate a point in logarithmic time. This project's approach was the following:
 \begin{enumerate}
     \item Decompose the polygon in trapezoids. A \textbf{trapezoid} is a 4-sided flat shape with straight sides that has a pair of opposite sides parallel. This step is done by randomly selecting a segment from a set of segments that are non-horizontal and non-intersecting from the polygon and adding them incrementally to form the trapezoids inside the boundaries of the polygon.
@@ -76,7 +81,7 @@ A similar project related to ours is called "Fast Polygon Triangulation Based on
 \centering
 \includegraphics[scale=0.5]{relatedWork}
 
-\section{Computer Graphics}
+\section{Computer Graphics}\justifying
     The term "computer graphics" refers to anything involved in the creation or manipulation
 of images on a computer, including animated images.\cite{ComputerGraphics}. This is a very broad field, because of 2D and 3D figures of all kinds, shapes, and sizes. For this paper, we will be focused only on planar objects. Planar objects, sometimes called 2D shapes, are created on a single plane (usually the xy-plane). Focusing on planar objects, 2D primitives like lines, circles, etc. may be used to create more complex shapes.\cite{2DGraphics}. These graphics are often preferred over 3D because they give more control over the images, and it is very easy to escalate, rotate, or any other way to manipulate them.\\
 Computer graphics first appeared in the 50's, and one of the firsts and more popular computer game was Spacewar, developed at MIT by Steve Russell. It took the team about 200 man-hours to write the first version of Spacewar. Russell wrote Spacewar on a PDP-1, an early DEC (Digital Equipment Corporation) interactive mini computer which used a cathode-ray tube type display and keyboard input.\cite{SpaceWar}. Since then, 2D graphics have been being improved and now there are more and better algorithms and techniques that allow us easily keep developing 2D computer graphics.
