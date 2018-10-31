@@ -8,6 +8,7 @@
 \usepackage{textcomp}
 \usepackage{xcolor}
 \usepackage{listings}
+\usepackage{float}
 
 \definecolor{dkgreen}{rgb}{0,0.6,0}
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
@@ -106,7 +107,23 @@ $$\includegraphics[scale=0.6]{Typeofpolygons}$$
             \item Divide and Conquer Algorithm
         \end{itemize}
     \end{itemize}
-\section{Ear Clipping}
+    
+\section{Delaunay Algorithms}
+For understanding Deulanay triangulation algorithms it is necessary an overview of \textbf{Voronoi Diagrams}.\\
+A \textbf{Voronoi diagram} is on of the simplest way for making interpolation, which means obtaining new data points within the range of aleready known data points. Voronoi diagrams, also known as Thiessen polygons, are used for  partitioning the euclidean plane and it is done based on the euclidean distance of a set of data points. \\
+The Voronoi diagram of a set of “sites” or “generators” (points) is a collection of regions that divide up the plane. Each region corresponds to one of the sites or generators, and all of the points in one region are closer to the corresponding site than to any other site.\cite{Voronoi}. Thiessen polygons are used, for example, in flights for finding the nearest airport, when we are trying to find the nearest restaurants and, of course, in computer graphics. \\
+In figure \ref{fig:VoronoiColors} you can see an example of Voronoi cells on a colored image. Each color is related to the point inside the colored section. The color represents the section of the map closer to that point than other data points of the plane. 
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=150,height=150,keepaspectratio]{VoronoiColors.png}
+    \caption{8x8 Empty Sudoku}
+    \label{fig:VoronoiColors}
+\end{figure}
+
+It is very simple to understand how these diagrams are generated. Consider $P={P_1,P_2,P_3,..,P_n}$ as a set of data points, $V=$
+
+\section{Ear Clipping (Non Delaunay)}
 An ear of a polygon is a triangle formed by three consecutive vertices $V_{i0},V_{i1},$ and $V_{i2}$ for which $V_{i1}$ is a convex vertex. The line segment from $V_{i0}$ to $V_{i2}$ lies completely inside the polygon, and no vertices of the polygon are inside the triangle other than its components. The line segment between $V_{i0}$ and $V_{i2}$ is a diagonal of the polygon. The vertex $V_{i1}$ is called the ear tip. A triangle has only one ear and can be any of the triangle's vertices. The Ear Clipping algorithm takes $O(n^2)$.
 \section{Experimentation}
 For the experimentation process, a background image was set to be used as a guideline and then manually, add vertices in order to enclose the image and create either a convex or concave 2D polygon.
