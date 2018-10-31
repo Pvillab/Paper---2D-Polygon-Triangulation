@@ -60,14 +60,14 @@ ibarqueroga@gmail.com, joseph.feng1@gmail.com,paulvillabeita@gmail.com}
 
 \maketitle
 \section{Abstract}
-    The following document reports the results gathered during the project called "2D Polygon Triangulation" which the main purpose is to triangulate 2-dimensional polygons with 2 different implementations which are using Delaunay-Constrained Polygons and Non-Delaunay ones. After the experimentation phase both implementations are of order $O(n^2)$. The Non-Delaunay polygons are tested with the use of similar polygons but with different amount of vertices.
+    The following document reports the results gathered during the project called "2D Polygon Triangulation" which the main purpose is to triangulate 2-dimensional polygons with 2 different implementations which are using Delaunay-Constrained Polygons and Non-Delaunay ones. After the experimentation phase both implementations were of order $O(n^2)$. The Non-Delaunay polygons are tested with the use of similar polygons but with different amount of vertices.
     
 \section{Introduction}
-Game figures and models that are visible in a computer screen and pretty much any other polygon can be deconstructed into triangles. This process is called \textbf{triangulation}. In the following project, two different implementation were tested. One implementation uses polygons with Delaunay constraints and another implementation with non-Delaunay polygons.For the triangulation of non-Delaunay polygons, the chosen approach was the Ear Clipping method, for this implementation only 2D and \textbf{simple polygons} are tested. \textbf{Non-simple polygons} are those with one or more vertex are shared among various triangles or edges between two vertices that are intersected by other edge. Also, no additional vertices will be inserted in order to triangulate. The second implementation 
+Game figures and models that are visible in a computer screen and pretty much any other polygon can be deconstructed into triangles. This process is called \textbf{triangulation}. In the following project, two different implementation are tested. One implementation uses polygons with Delaunay constraints and another one with non-Delaunay polygons. For the triangulation of non-Delaunay polygons, the chosen approach was the Ear Clipping method, for this implementation only 2D and \textbf{simple polygons} are tested. \textbf{Non-simple polygons} are those with one or more vertex are shared among various triangles or edges between two vertices that are intersected by other edge. Also, no additional vertices will be inserted in order to triangulate. The second implementation 
 $$\includegraphics[scale=0.7]{nonsimpleExample}$$
 
 \section{Related Work}
-A similar project related to ours is "Fast Polygon Triangulation Based on Seidel's Algorithm"\cite{relatedProject} conducted by Atul Narkhede and Dinesh Manocha. As the title of the project suggests, the use of the Seidel's Algorithm was key. It uses the structure of undirected, unweighted, and connected graphs. It solves the problem in $O(n*logn)$ with polygons that do not have holes and using a query structure to locate a point in logarithmic time. This project approach was the following:
+A similar project related to ours is called "Fast Polygon Triangulation Based on Seidel's Algorithm"\cite{relatedProject} conducted by Atul Narkhede and Dinesh Manocha. As the title of the project suggests, the use of the Seidel's Algorithm was key. It uses the structure of undirected, unweighted, and connected graphs. It solves the problem in $O(n*logn)$ with polygons that do not have holes and using a query structure to locate a point in logarithmic time. This project's approach was the following:
 \begin{enumerate}
     \item Decompose the polygon in trapezoids. A \textbf{trapezoid} is a 4-sided flat shape with straight sides that has a pair of opposite sides parallel. This step is done by randomly selecting a segment from a set of segments that are non-horizontal and non-intersecting from the polygon and adding them incrementally to form the trapezoids inside the boundaries of the polygon.
     \item After the polygon is partitioned into trapezoids, they're yet again partitioned but this time into monotone polygons. \text{Monotone polygons} are polygons whose boundaries consist of two y-monotone chains. These \textbf{monotone chains} come from the Andrew's monotone chain convex hull algorithm. This algorithm constructs the convex hull of a set of 2-dimensional points and has a $O(nlogn)$ complexity. This step checks the segments from step 1 and see if the two vertices of each segment lie on the same side.
@@ -78,15 +78,15 @@ A similar project related to ours is "Fast Polygon Triangulation Based on Seidel
 
 \section{Computer Graphics}
     The term "computer graphics" refers to anything involved in the creation or manipulation
-of images on computer, including animated images.\cite{ComputerGraphics}. This is a very broad field, because it includes, for example, 2D and 3D images, such as animated images. For this paper we will be focused only on planar objects. Planar objects, sometimes called 2D shapes, are created on a single plane (usually the xy-plane). Focusing on planar objects, 2D primitives like lines, circles, etc. may be used to create more complex shapes.\cite{2DGraphics}. These graphics are often preferred over 3D because they give more control over the images, and it is very easy to escalate or rotate them.\\
-Computer graphics first appeared in the 50's, and one of the firsts and more popular computer game was Spacewar!, developed at MIT by Steve Russell. It took the team about 200 man-hours to write the first version of Spacewar. Russell wrote Spacewar on a PDP-1, an early DEC (Digital Equipment Corporation) interactive mini computer which used a cathode-ray tube type display and keyboard input.\cite{SpaceWar}. Since then, 2D graphics have been being improved and now there are more and better algorithms and techniques that allow us easily keep developing 2D computer graphics.
+of images on a computer, including animated images.\cite{ComputerGraphics}. This is a very broad field, because of 2D and 3D figures of all kinds, shapes, and sizes. For this paper, we will be focused only on planar objects. Planar objects, sometimes called 2D shapes, are created on a single plane (usually the xy-plane). Focusing on planar objects, 2D primitives like lines, circles, etc. may be used to create more complex shapes.\cite{2DGraphics}. These graphics are often preferred over 3D because they give more control over the images, and it is very easy to escalate, rotate, or any other way to manipulate them.\\
+Computer graphics first appeared in the 50's, and one of the firsts and more popular computer game was Spacewar, developed at MIT by Steve Russell. It took the team about 200 man-hours to write the first version of Spacewar. Russell wrote Spacewar on a PDP-1, an early DEC (Digital Equipment Corporation) interactive mini computer which used a cathode-ray tube type display and keyboard input.\cite{SpaceWar}. Since then, 2D graphics have been being improved and now there are more and better algorithms and techniques that allow us easily keep developing 2D computer graphics.
 
 \section{Polygon Triangulation}
 Computing the triangulation of a polygon is a fundamental algorithm in computational
 geometry. It also seems to be the most investigated partitioning method\cite{Triangulation}. \\Polygon Triangulation is the decomposition of a polygon in a surface or plane, into a set of triangles, with the restriction that each triangle side is entirely shared by two adjacent triangles. In computer graphics, polygon triangulation algorithms are widely used for tessellating curved geometries. Triangulation can be applied to both convex and concave polygons. Concave polygons are those that have internal angles greater than 180 degrees, convex polygons are the opposite, internal angles sum 180 or less degrees. The Triangulation Theorem \cite{Theorem}states that:
 \begin{itemize}
     \item{Every simple polygon admits a triangulation}
-\item{Every triangulation of an n-gon has exactly $n-2$ triangles}
+    \item{Every triangulation of an n-gon has exactly $n-2$ triangles}
 \end{itemize}
 $$\includegraphics[scale=0.6]{Typeofpolygons}$$
 \subsection{Triangulation Approaches}\cite{TriangulationApproaches}
@@ -108,7 +108,7 @@ $$\includegraphics[scale=0.6]{Typeofpolygons}$$
             \item Uniqueness
             \item Boundary property
         \end{itemize}
-        \subsubsection{Algorithms}
+        \subsubsection{Some Delaunay Algorithms}
         \begin{itemize}
             \item Incremental Algorithms
             \item Filliping Algorithm
@@ -119,8 +119,8 @@ $$\includegraphics[scale=0.6]{Typeofpolygons}$$
 
 \section{Methodology}
 \subsection{Delaunay Algorithms}
-For  understanding  Deulanay  triangulation  algorithms  it  is necessary an overview of Voronoi Diagrams.\\
-A \textbf{ Voronoi diagram} is  on  of  the  simplest  way  for  making interpolation,  which  means  obtaining  new  data  points  within the  range  of  already  known  data  points.  Voronoi  diagrams,also known as Thiessen polygons, are used for partitioning the euclidean plane and it is done based on the euclidean distance of a set of data points.The Voronoi diagram of a set of sites or generators (points) is a  collection  of  regions  that  divide  up  the  plane.  Each  region corresponds  to  one  of  the  sites  or  generators,  and  all  of  the points in one region are closer to the corresponding site than to any other site. \cite{VoronoiD}. Thiessen polygons are used, for example, in  flights  for  finding  the  nearest  airport,  when  we  are  trying to  find  the  nearest  restaurants  and,  of  course,  in  computer graphics.\\In  figure  \ref{fig:VoronoiColored} you  can  see  an  example  of  Voronoi  cells  on  a colored  image.  Each  color  is  related  to  the  point  inside  the colored  section.  The  color  represents  the  section  of  the  map closer to that point than other data points of the plane.
+For the understanding of Delaunay  triangulation  algorithms,  it is necessary an overview of Voronoi Diagrams.\\
+A \textbf{ Voronoi diagram} is  one  of  the  simplest  ways  to  make interpolation,  which  means  obtaining  new  data  points  within the  range  of  already  known  data  points.  Voronoi  diagrams,also known as Thiessen polygons, are used for partitioning the euclidean plane and it is done based on the euclidean distance of a set of data points.The Voronoi diagram of a set of sites or generators (points) is a  collection  of  regions  that  divide  up  the  plane.  Each  region corresponds  to  one  of  the  sites  or  generators,  and  all  of  the points in one region are closer to the corresponding site than to any other site. \cite{VoronoiD}. Thiessen polygons are used, for example, in  flights  for  finding  the  nearest  airport,  when  we  are  trying to  find  the  nearest  restaurants  and,  of  course,  in  computer graphics.\\In  figure  \ref{fig:VoronoiColored} you  can  see  an  example  of  Voronoi  cells  on  a colored  image.  Each  color  is  related  to  the  point  inside  the colored  section.  The  color  represents  the  section  of  the  map closer to that point than other data points of the plane.
 
 \begin{figure}[H]
     \centering
@@ -138,7 +138,7 @@ It is very simple to understand how these regions are generated. Lets consider $
     \label{fig:VoronoiDiagram1}
 \end{figure}
 
-But, lets see how these diagrams are generated form scratch. First, we will place the data points. After that, it is necessary to draw lines connecting the data points. At the same time, we have to draw a bisector for each one of those lines. Finally, we "erase" the lines connecting the data points. The result will be the diagram.
+But, lets see how these diagrams are generated from scratch. First, we will place the data points. After that, it is necessary to draw lines connecting the data points. At the same time, we have to draw a bisector for each one of those lines. Finally, we "erase" the lines connecting the data points. The result will be the diagram.
 
 \begin{figure}[H]
     \centering
@@ -157,7 +157,7 @@ Now that the Voronoi diagram has been explained, it can be said that P (set of d
 \end{figure}
 
 In figure \ref{fig:Delaunay&Voronoi} are both diagrams and the relation was demonstrated by Delaunay, that proved that the dual graph of the Voronoi diagram drawn with straight lines produces a planar triangulation of the Voronoi sites P, now called the Delaunay triangulation D (P).\cite{DelaunayTriangulation}\\
-A better way to understand this relation is that if having a vertex from the Voronoi diagram, is known that at least three point of P are equally distant from him, and with the previous definitions is known that can be draw a circle through these three points and any other point from P could'n be contained in the circle and it could be said that a Voronoi vertice is a open polygonal region in a Delaunay Triangulation, an edge of the Voronoi diagram corresponds to a Delaunay edge, and a open polygonal region of the Voronoi diagram corresponds to a vertex in the Delaunay triangulation.\cite{TriangulationsUnknown}
+A better way to understand this relation is that if having a vertex from the Voronoi diagram, is known that at least three point of P are equally distant from him, and with the previous definitions is known that can be draw a circle through these three points and any other point from P couldn't be contained in the circle and it could be said that a Voronoi vertice is a open polygonal region in a Delaunay Triangulation, an edge of the Voronoi diagram corresponds to a Delaunay edge, and a open polygonal region of the Voronoi diagram corresponds to a vertex in the Delaunay triangulation.\cite{TriangulationsUnknown}
     
 \subsection{Ear Clipping Algorithm}
 An ear of a polygon, shown in figure 5, is a triangle formed by three consecutive vertices $V_{i0},V_{i1},$ and $V_{i2}$ for which $V_{i1}$ is a convex vertex. The line segment from $V_{i0}$ to $V_{i2}$ lies completely inside the polygon, and no vertices of the polygon are inside the triangle other than its components. The line segment between $V_{i0}$ and $V_{i2}$ is a diagonal of the polygon. The vertex $V_{i1}$ is called the ear tip. A triangle has only one ear and can be any of the triangle's vertices. The Ear Clipping algorithm takes $O(n^2)$\cite{EarClipping}
@@ -169,6 +169,7 @@ An ear of a polygon, shown in figure 5, is a triangle formed by three consecutiv
 \end{figure}
 
 \subsection{Code Analysis}
+\textbf{Non-Delaunay Implementation}
 \begin{lstlisting}
     public void triangulatePolygon() {
       
@@ -223,6 +224,7 @@ $19+10+n+(n+n^2+1+n^2)$
 $29+n+(n^2+n+1)$
 $30+n+n^2$
 $$\therefore O(n^2)$$
+\textbf{Delaunay Implementation}
 \begin{lstlisting}
     def addPoint(self, p):
     
@@ -284,14 +286,14 @@ For the experimentation process, a background image was set to be used as a guid
 
 \includegraphics[scale=0.6]{spideyresults.png}
 
-In this experiment it can be seen that in the Spider-Man image it test with different quantity of vertices, and according to that the quantity of triangles will be n-2, and because that the algorithm will last more and will increase his response time theoretically.
+In this part of the experiment it can be seen that in the Spider-Man image, it was tested with different quantity of vertices, and according to that, the quantity of triangles will be n-2 (satisfying the theorem), and because that the algorithm will last more and will increase his response time theoretically.
 
 \includegraphics[scale=0.53]{totoroResults.png}
 
-Also with this last image of Totoro, according to the quantity of vertices it will be the quantity of the triangles, and with this said and theoretically seen in the previous analysis of the triangulation code it should extend his duration time with more vertices.
+Also, this last image of Totoro, based on the quantity of vertices, the quantity of the triangles is n-2 (satisfying the theorem once again), and with this said and theoretically seen in the previous analysis of the triangulation code, it should extend his duration time with more vertices.
 
 \subsection{Delaunay triangulation}
-Doing this experiment is quite simple. What we do is only setting an amount of data point and what we want to see is how the triangulation is made and all the sections generated. Figure \ref{fig:Delaunay1} is an example of a triangulation made of 7 data points. It is important to consider that the minimum amount of starting data points is 3 for making a triangulation.
+This part of the experimentation phase is quite simple. What we do is only setting an amount of data point and what we want to see is how the triangulation is made and all the sections generated. Figure \ref{fig:Delaunay1} is an example of a triangulation made of 7 data points. It is important to consider that the minimum amount of starting data points is 3 for making a triangulation.
 
 \begin{figure}[H]
     \centering
