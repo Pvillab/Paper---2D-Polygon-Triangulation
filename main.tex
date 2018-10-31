@@ -8,7 +8,7 @@
 \usepackage{textcomp}
 \usepackage{xcolor}
 \usepackage{listings}
-
+\usepackage{float}
 \definecolor{dkgreen}{rgb}{0,0.6,0}
 \definecolor{gray}{rgb}{0.5,0.5,0.5}
 \definecolor{mauve}{rgb}{0.58,0,0.82}
@@ -66,13 +66,14 @@ $$\includegraphics[scale=0.7]{nonsimpleExample}$$
 \section{Related Work}
 A similar project related to ours is "Fast Poplygon Triangulation Based on Seidel's Algorithm" conducted by Atul Narkhede and Dinesh Manocha. As the title of the project suggests, the use of the Seidel's Algorithm was key. It uses the structure of undirected, unweighted, and connected graphs. It solves the problem in $O(n*logn)$ with polygons that do not have holes and using a query structure to locate a point in logarithmic time.\cite{relatedProject}
 
-\section{Methodology}
-\subsection{Computer Graphics}
+
+\section{Computer Graphics}
 The term "computer graphics" refers to anything involved in the creation or manipulation
 of images on computer, including animated images.\cite{ComputerGraphics}. This is a very broad field, because it includes, for example, 2D and 3D images, such as animated images. For this paper we will be focused only on planar objects. Planar objects, sometimes called 2D shapes, are created on a single plane (usually the xy-plane). Focusing on planar objects, 2D primitives like lines, circles, etc. may be used to create more complex shapes.\cite{2DGraphics}. These graphics are often preferred over 3D because they give more control over the images, and it is very easy to escalate or rotate them.\\
 Computer graphics first appeared in the 50's, and one of the firsts and more popular computer game was Spacewar!, developed at MIT by Steve Russell. It took the team about 200 man-hours to write the first version of Spacewar. Russell wrote Spacewar on a PDP-1, an early DEC (Digital Equipment Corporation) interactive mini computer which used a cathode-ray tube type display and keyboard input.\cite{SpaceWar}. Since then, 2D graphics have been being improved and now there are more and better algorithms and techniques that allow us easily keep developing 2D computer graphics.
 
-\subsection{Polygon Triangulation}
+
+\section{Polygon Triangulation}
 Computing the triangulation of a polygon is a fundamental algorithm in computational
 geometry. It also seems to be the most investigated partitioning method\cite{Triangulation}. \\Polygon Triangulation is the decomposition of a polygon in a surface or plane, into a set of triangles, with the restriction that each triangle side is entirely shared by two adjacent triangles. In computer graphics, polygon triangulation algorithms are widely used for tessellating curved geometries. Triangulation can be applied to both convex and concave polygons. Concave polygons are those that have internal angles greater than 180 degrees, convex polygons are the opposite, internal angles sum 180 or less degrees. The Triangulation Theorem \cite{Theorem}s tates that:
 \begin{itemize}
@@ -107,6 +108,38 @@ $$\includegraphics[scale=0.6]{Typeofpolygons}$$
             \item Divide and Conquer Algorithm
         \end{itemize}
     \end{itemize}
+    
+
+\section{Metodology}
+\subsection{Delaunay Algorithms}
+For  understanding  Deulanay  triangulation  algorithms  it  isnecessary an overview of Voronoi Diagrams.\\
+A \textbf{ Voronoi diagram} is  on  of  the  simplest  way  for  making interpolation,  which  means  obtaining  new  data  points  within the  range  of  aleready  known  data  points.  Voronoi  diagrams,also known as Thiessen polygons, are used for partitioning the euclidean plane and it is done based on the euclidean distanceof a set of data points.The Voronoi diagram of a set of sites or generators (points) is a  collection  of  regions  that  divide  up  the  plane.  Each  region corresponds  to  one  of  the  sites  or  generators,  and  all  of  the points in one region are closer to the corresponding site thanto any other site. \cite{VoronoiD}. Thiessen polygons are used, for example,in  flights  for  finding  the  nearest  airport,  when  we  are  trying to  find  the  nearest  restaurants  and,  of  course,  in  computer graphics.\\In  figure  \ref{fig:VoronoiColored} you  can  see  an  example  of  Voronoi  cells  on  a colored  image.  Each  color  is  related  to  the  point  inside  the colored  section.  The  color  represents  the  section  of  the  map closer to that point than other data points of the plane.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=150,height=150,keepaspectratio]{VoronoiColors.png}
+    \caption{Voronoi Cells}
+    \label{fig:VoronoiColored}
+\end{figure}
+    
+It is very simple to understand how these regions are generated. Lets consider $P=\{P_1,P_2,...,P_n\}$ as a set of data points on a plane, $V={\{V_1,V_2,...,V_n\}}$ as lines connecting the points on the plane and finally $S={\{S_1,S_2,...,S_n\}}$ as the bisectors of each $V_i \in V$.Each section of the plane will be defined as the areas generated by the intersections of each $S_i$, as shown in figure \ref{fig:VoronoiDiagram1}. Black points represent data points $P_i$, black lines each $V_i$, as the lines connecting each data point, and red lines their bisectors that splits the map in tree sections. Each section is called a Voronoi Cell, and the whole sections together conforms the Voronoi Diagram.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=200,height=150,keepaspectratio]{maxresdefault2.jpg}
+    \caption{Simple Voronoi Diagram}
+    \label{fig:VoronoiDiagram1}
+\end{figure}
+
+But, lets see how these diagrams are generated form scratch. First, we will place the data points. After that, it is necessary to draw lines connecting the data points. At the same time, we have to draw a bisector for each one of those lines. Finally, we "erase" the lines connecting the data points. The result will be the diagram.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=200,height=100,keepaspectratio]{DiagramGeneration.jpg}
+    \caption{Voronoi Diagram Generation}
+    \label{fig:VoronoiDiagram1}
+\end{figure}
+    
 \subsection{Ear Clipping}
 An ear of a polygon is a triangle formed by three consecutive vertices $V_{i0},V_{i1},$ and $V_{i2}$ for which $V_{i1}$ is a convex vertex. The line segment from $V_{i0}$ to $V_{i2}$ lies completely inside the polygon, and no vertices of the polygon are inside the triangle other than its components. The line segment between $V_{i0}$ and $V_{i2}$ is a diagonal of the polygon. The vertex $V_{i1}$ is called the ear tip. A triangle has only one ear and can be any of the triangle's vertices. The Ear Clipping algorithm takes $O(n^2)$\cite{EarClipping}
 
