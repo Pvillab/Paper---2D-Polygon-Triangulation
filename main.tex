@@ -273,6 +273,7 @@ $8+2n+15n+15+2n+3n+3n^2+5n$
 $3n^2+25n+23$
 $$\therefore O(n^2)$$
 \section{Experiments}
+\subsection{Ear Clipping}
 For the experimentation process, a background image was set to be used as a guideline and then manually, add vertices in order to enclose the image and create similar polygons with different vertices, and watch how the algorithm behaves and how his time can change depending on the quantity of his vertices.
 
 \includegraphics[scale=0.6]{spideyresults.png}
@@ -283,11 +284,45 @@ In this experiment it can be seen that in the SpiderMan image it test with diffe
 
 Also with this last image of Totoro, according to the quantity of vertices it will be the quantity of the triangles, and with this said and theoretically seen in the previous analysis of the triangulation code it should extend his duration time with more vertices.
 
+\subsection{Delaunay triangulation}
+Doing this experiment is quite simple. What we do is only setting an amount of data point and what we want to see is how the triangulation is made and all the sections generated. Figure \ref{fig:Delaunay1} is an example of a triangulation made of 7 data points. It is important to consider that the minimum amount of starting data points is 3 for making a triangulation.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=150,height=150,keepaspectratio]{delaunay1.jpg}
+    \caption{Delaunay Triangulation, 7 data points}
+    \label{fig:Delaunay1}
+\end{figure}
+As we can see, the previous figure is very simple because of the number of data points. On figure \ref{fig:Delaunay2}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=150,height=150,keepaspectratio]{delaunay25.jpg}
+    \caption{Delaunay Triangulation, 7 data points}
+    \label{fig:Delaunay2}
+\end{figure}
+
+
 \section{Results}
 
-\includegraphics[scale=0.58]{Graphs.png}
 
-After conducting this part of the experiment, the results showed that the amount of vertices versus time can be different across different polygons based on the contour of the images. This is because there are images that, after enclosing them in a convex hull formed by the vertices, can be simple polygons more than others, that is, that have more edges, bends, curves, etcetera. So, the algorithm needs to check if the new triangle formed by the inclusion of a new vertex is a valid one or not. In synthesis, if a polygon has a lot of vertices, that means that the algorithm will take more time testing each of its vertices; therefore, taking more time to triangulate said polygon. In the last figure shows the graph corresponding to the Totoro image test, and can give a glimpse of the $n^2$ behaviour even though the line is not very steep.\\
+After conducting this part of the experiment, the results showed that the amount of vertices versus time can be different across different polygons based on the contour of the images. This is because there are images that, after enclosing them in a convex hull formed by the vertices, can be simple polygons more than others, that is, that have more edges, bends, curves, etcetera. So, the algorithm needs to check if the new triangle formed by the inclusion of a new vertex is a valid one or not. In synthesis, if a polygon has a lot of vertices, that means that the algorithm will take more time testing each of its vertices; therefore, taking more time to triangulate said polygon. Figure \ref{fig:Result1} is a graph corresponding to the Totoro image test, and can give a glimpse of the $n^2$ behaviour even though the line is not very steep.\\
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=200,height=150,keepaspectratio]{Graphs.png}
+    \caption{Ear clipping results}
+    \label{fig:Result1}
+\end{figure}
+
+For second experiment, as expected, the time for generating Delaunay triangles increases as the number of data points increases as well. Also, it we noticed that the number of triangles generated have the same behavior, as the amount of data points increases, there are more triangles generated too. Figure \ref{fig:Result2} shows the behavior of the algorithm using different amounts of starting data points.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=200,height=150,keepaspectratio]{graphs.jpg}
+    \caption{Delaunay results}
+    \label{fig:Result2}
+\end{figure}
 
 \bibliographystyle{plain}
 \bibliography{references}
