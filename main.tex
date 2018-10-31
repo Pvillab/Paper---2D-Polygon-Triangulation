@@ -61,11 +61,17 @@ ibarqueroga@gmail.com, joseph.feng1@gmail.com,paulvillabeita@gmail.com}
 \maketitle
 \section{Abstract}
 \section{Introduction}
-Game figures and models that are visible in a computer screen and pretty much any other polygon can be deconstructed into triangles. This process is called \textbf{triangulation}. In the following project, the chosen triangulation approach is the Ear Clipping path in order to "deconstruct" simple polygons.. Only 2D and \textbf{non-simple polygons} (meaning one or more vertex are shared among various triangles or edges between two vertices that are intersected by other edge) are tested in this project. Additionally, no additional vertices will be inserted.
+Game figures and models that are visible in a computer screen and pretty much any other polygon can be deconstructed into triangles. This process is called \textbf{triangulation}. In the following project, the chosen triangulation approach is the Ear Clipping path in order to "deconstruct" simple polygons. Only 2D and \textbf{simple polygons} are tested in this project. Non-simple polygons are those with one or more vertex are shared among various triangles or edges between two vertices that are intersected by other edge. Also, no additional vertices will be inserted in order to triangulate.
 $$\includegraphics[scale=0.7]{nonsimpleExample}$$
-\section{Related Work}
-A similar project related to ours is "Fast Poplygon Triangulation Based on Seidel's Algorithm" conducted by Atul Narkhede and Dinesh Manocha. As the title of the project suggests, the use of the Seidel's Algorithm was key. It uses the structure of undirected, unweighted, and connected graphs. It solves the problem in $O(n*logn)$ with polygons that do not have holes and using a query structure to locate a point in logarithmic time.\cite{relatedProject}
 
+\section{Related Work}
+A similar project related to ours is "Fast Polygon Triangulation Based on Seidel's Algorithm" conducted by Atul Narkhede and Dinesh Manocha. As the title of the project suggests, the use of the Seidel's Algorithm was key. It uses the structure of undirected, unweighted, and connected graphs. It solves the problem in $O(n*logn)$ with polygons that do not have holes and using a query structure to locate a point in logarithmic time. This project approach was the following:
+\begin{enumerate}
+    \item Decompose the polygon in trapezoids. A \textbf{trapezoid} is a 4-sided flat shape with straight sides that has a pair of opposite sides parallel. This step is done by randomly selecting a segment from a set of segments that are non-horizontal and non-intersecting from the polygon and adding them incrementally to form the trapezoids inside the boundaries of the polygon.
+    \item After the polygon is partitioned into trapezoids, they're yet again partitioned but this time into monotone polygons. \text{Monotone polygons} are polygons whose boundaries consist of two y-monotone chains. These \textbf{monotone chains} come from the Andrew's monotone chain convex hull algorithm. This algorithm constructs the convex hull of a set of 2-dimensional points and has a $O(nlogn)$ complexity. This step checks the segments from step 1 and see if the two vertices of each segment lie on the same side.
+    \item The last step is to triangulate the monotone polygons. Their triangulation method was a greedy algorithm that cuts off the convex corners in a loop. The triangulation of each monotone polygon is done in $O(n)$.
+\end{enumerate}
+\cite{relatedProject}
 
 \section{Computer Graphics}
 The term "computer graphics" refers to anything involved in the creation or manipulation
