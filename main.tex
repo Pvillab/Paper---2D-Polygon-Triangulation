@@ -284,7 +284,7 @@ For the experimentation process, a background image was set to be used as a guid
 
 \includegraphics[scale=0.6]{spideyresults.png}
 
-In this experiment it can be seen that in the SpiderMan image it test with different quantity of vertices, and according to that the quantity of triangles will be n-2, and because that the algorithm will last more and will increase his response time theoretically.
+In this experiment it can be seen that in the Spider-Man image it test with different quantity of vertices, and according to that the quantity of triangles will be n-2, and because that the algorithm will last more and will increase his response time theoretically.
 
 \includegraphics[scale=0.53]{totoroResults.png}
 
@@ -308,17 +308,17 @@ As we can see, the previous figure is very simple because of the number of data 
     \label{fig:Delaunay2}
 \end{figure}
 
-
 \section{Results}
-
-
 After conducting this part of the experiment, the results showed that the amount of vertices versus time can be different across different polygons based on the contour of the images. This is because there are images that, after enclosing them in a convex hull formed by the vertices, can be simple polygons more than others, that is, that have more edges, bends, curves, etcetera. So, the algorithm needs to check if the new triangle formed by the inclusion of a new vertex is a valid one or not. In synthesis, if a polygon has a lot of vertices, that means that the algorithm will take more time testing each of its vertices; therefore, taking more time to triangulate said polygon. Figure \ref{fig:Result1} is a graph corresponding to the Totoro image test, and can give a glimpse of the $n^2$ behaviour even though the line is not very steep.\\
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=200,height=150,keepaspectratio]{Graphs.png}
-    \caption{Ear clipping results}
+    \includegraphics[width=200,height=150,keepaspectratio]{SpiderMan}
+    \caption{Spider-Man Ear clipping results}
     \label{fig:Result1}
+    \centering
+    \includegraphics[width=200,height=150,keepaspectratio]{totoro}
+    \caption{Totoro Ear Clipping results}
 \end{figure}
 
 For the second experiment, as expected, the time for generating Delaunay triangles increases as the number of data points increases as well. Also, it we noticed that the number of triangles generated have the same behavior, as the amount of data points increases, there are more triangles generated too. Figure \ref{fig:Result2} shows the behavior of the algorithm using different amounts of starting data points.
