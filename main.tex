@@ -67,19 +67,19 @@ Game figures and models that are visible in a computer screen and pretty much an
 $$\includegraphics[scale=0.7]{nonsimpleExample}$$
 
 \section{Related Work}
-A similar project related to ours is "Fast Polygon Triangulation Based on Seidel's Algorithm" conducted by Atul Narkhede and Dinesh Manocha. As the title of the project suggests, the use of the Seidel's Algorithm was key. It uses the structure of undirected, unweighted, and connected graphs. It solves the problem in $O(n*logn)$ with polygons that do not have holes and using a query structure to locate a point in logarithmic time. This project approach was the following:
+A similar project related to ours is "Fast Polygon Triangulation Based on Seidel's Algorithm"\cite{relatedProject} conducted by Atul Narkhede and Dinesh Manocha. As the title of the project suggests, the use of the Seidel's Algorithm was key. It uses the structure of undirected, unweighted, and connected graphs. It solves the problem in $O(n*logn)$ with polygons that do not have holes and using a query structure to locate a point in logarithmic time. This project approach was the following:
 \begin{enumerate}
     \item Decompose the polygon in trapezoids. A \textbf{trapezoid} is a 4-sided flat shape with straight sides that has a pair of opposite sides parallel. This step is done by randomly selecting a segment from a set of segments that are non-horizontal and non-intersecting from the polygon and adding them incrementally to form the trapezoids inside the boundaries of the polygon.
     \item After the polygon is partitioned into trapezoids, they're yet again partitioned but this time into monotone polygons. \text{Monotone polygons} are polygons whose boundaries consist of two y-monotone chains. These \textbf{monotone chains} come from the Andrew's monotone chain convex hull algorithm. This algorithm constructs the convex hull of a set of 2-dimensional points and has a $O(nlogn)$ complexity. This step checks the segments from step 1 and see if the two vertices of each segment lie on the same side.
     \item The last step is to triangulate the monotone polygons. Their triangulation method was a greedy algorithm that cuts off the convex corners in a loop. The triangulation of each monotone polygon is done in $O(n)$.
 \end{enumerate}
-\cite{relatedProject}
+\centering
+\includegraphics[scale=0.5]{relatedWork}
 
 \section{Computer Graphics}
-The term "computer graphics" refers to anything involved in the creation or manipulation
+    The term "computer graphics" refers to anything involved in the creation or manipulation
 of images on computer, including animated images.\cite{ComputerGraphics}. This is a very broad field, because it includes, for example, 2D and 3D images, such as animated images. For this paper we will be focused only on planar objects. Planar objects, sometimes called 2D shapes, are created on a single plane (usually the xy-plane). Focusing on planar objects, 2D primitives like lines, circles, etc. may be used to create more complex shapes.\cite{2DGraphics}. These graphics are often preferred over 3D because they give more control over the images, and it is very easy to escalate or rotate them.\\
 Computer graphics first appeared in the 50's, and one of the firsts and more popular computer game was Spacewar!, developed at MIT by Steve Russell. It took the team about 200 man-hours to write the first version of Spacewar. Russell wrote Spacewar on a PDP-1, an early DEC (Digital Equipment Corporation) interactive mini computer which used a cathode-ray tube type display and keyboard input.\cite{SpaceWar}. Since then, 2D graphics have been being improved and now there are more and better algorithms and techniques that allow us easily keep developing 2D computer graphics.
-
 
 \section{Polygon Triangulation}
 Computing the triangulation of a polygon is a fundamental algorithm in computational
@@ -116,7 +116,6 @@ $$\includegraphics[scale=0.6]{Typeofpolygons}$$
             \item Divide and Conquer Algorithm
         \end{itemize}
     \end{itemize}
-    
 
 \section{Methodology}
 \subsection{Delaunay Algorithms}
@@ -143,7 +142,7 @@ But, lets see how these diagrams are generated form scratch. First, we will plac
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=200,height=100,keepaspectratio]{DiagramGeneration.jpg}
+    \includegraphics[width=200px,height=100px,keepaspectratio]{DiagramGeneration.jpg}
     \caption{Voronoi Diagram Generation}
     \label{fig:VoronoiDiagram1}
 \end{figure}
@@ -152,7 +151,7 @@ Now that the Voronoi diagram has been explained, it can be said that P (set of d
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=200,height=100,keepaspectratio]{Delaunay&VoronoiDiagrams.png}
+    \includegraphics[width=200px,height=100px,keepaspectratio]{Delaunay&VoronoiDiagrams.png}
     \caption{Delaunay and Voronoi Diagrams Examples}
     \label{fig:Delaunay&Voronoi}
 \end{figure}
@@ -161,7 +160,13 @@ In figure \ref{fig:Delaunay&Voronoi} are both diagrams and the relation was demo
 A better way to understand this relation is that if having a vertex from the Voronoi diagram, is known that at least three point of P are equally distant from him, and with the previous definitions is known that can be draw a circle through these three points and any other point from P could'n be contained in the circle and it could be said that a Voronoi vertice is a open polygonal region in a Delaunay Triangulation, an edge of the Voronoi diagram corresponds to a Delaunay edge, and a open polygonal region of the Voronoi diagram corresponds to a vertex in the Delaunay triangulation.\cite{TriangulationsUnknown}
     
 \subsection{Ear Clipping Algorithm}
-An ear of a polygon is a triangle formed by three consecutive vertices $V_{i0},V_{i1},$ and $V_{i2}$ for which $V_{i1}$ is a convex vertex. The line segment from $V_{i0}$ to $V_{i2}$ lies completely inside the polygon, and no vertices of the polygon are inside the triangle other than its components. The line segment between $V_{i0}$ and $V_{i2}$ is a diagonal of the polygon. The vertex $V_{i1}$ is called the ear tip. A triangle has only one ear and can be any of the triangle's vertices. The Ear Clipping algorithm takes $O(n^2)$\cite{EarClipping}
+An ear of a polygon, shown in figure 5, is a triangle formed by three consecutive vertices $V_{i0},V_{i1},$ and $V_{i2}$ for which $V_{i1}$ is a convex vertex. The line segment from $V_{i0}$ to $V_{i2}$ lies completely inside the polygon, and no vertices of the polygon are inside the triangle other than its components. The line segment between $V_{i0}$ and $V_{i2}$ is a diagonal of the polygon. The vertex $V_{i1}$ is called the ear tip. A triangle has only one ear and can be any of the triangle's vertices. The Ear Clipping algorithm takes $O(n^2)$\cite{EarClipping}
+\begin{figure}
+    \centering
+    \includegraphics[scale=0.5]{triangleEar}
+    \caption{Right-side polygon doesn't have the (2,3,4) ear, that the left-side polygon has.}
+    \label{fig:earExample}
+\end{figure}
 
 \subsection{Code Analysis}
 \begin{lstlisting}
