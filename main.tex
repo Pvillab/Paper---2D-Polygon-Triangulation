@@ -163,7 +163,7 @@ A better way to understand this relation is that if having a vertex from the Vor
 An ear of a polygon, shown in figure 5, is a triangle formed by three consecutive vertices $V_{i0},V_{i1},$ and $V_{i2}$ for which $V_{i1}$ is a convex vertex. The line segment from $V_{i0}$ to $V_{i2}$ lies completely inside the polygon, and no vertices of the polygon are inside the triangle other than its components. The line segment between $V_{i0}$ and $V_{i2}$ is a diagonal of the polygon. The vertex $V_{i1}$ is called the ear tip. A triangle has only one ear and can be any of the triangle's vertices. The Ear Clipping algorithm takes $O(n^2)$\cite{EarClipping}
 \begin{figure}
     \centering
-    \includegraphics[scale=0.5]{triangleEar}
+    \includegraphics[scale=0.6]{triangleEar}
     \caption{Right-side polygon doesn't have the (2,3,4) ear, that the left-side polygon has.}
     \label{fig:earExample}
 \end{figure}
@@ -321,13 +321,20 @@ After conducting this part of the experiment, the results showed that the amount
     \caption{Totoro Ear Clipping results}
 \end{figure}
 
-For the second experiment, as expected, the time for generating Delaunay triangles increases as the number of data points increases as well. Also, it we noticed that the number of triangles generated have the same behavior, as the amount of data points increases, there are more triangles generated too. Figure \ref{fig:Result2} shows the behavior of the algorithm using different amounts of starting data points.
+For the second experiment, as expected, the time for generating Delaunay triangles increases as the number of data points increases as well. Also, it we noticed that the number of triangles generated have the same behavior, as the amount of data points increases, there are more triangles generated too. Figure \ref{fig:delaunayResult1} shows the behavior of the algorithm using different amounts of starting data points.
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=200,height=150,keepaspectratio]{graphs.jpg}
-    \caption{Delaunay results}
-    \label{fig:Result2}
+    \includegraphics[width=200,height=150,keepaspectratio]{DelaunayGraph.png}
+    \caption{Delaunay First Experiment}
+    \label{fig:delaunayResult1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=200,height=150,keepaspectratio]{DelaunayGraph2.png}
+    \caption{Delaunay Second Experiment}
+    \label{fig:delaunayResult2}
 \end{figure}
 
 \bibliographystyle{plain}
