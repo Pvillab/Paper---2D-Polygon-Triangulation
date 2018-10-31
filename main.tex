@@ -75,13 +75,13 @@ Computer graphics first appeared in the 50's, and one of the firsts and more pop
 
 \section{Polygon Triangulation}
 Computing the triangulation of a polygon is a fundamental algorithm in computational
-geometry. It also seems to be the most investigated partitioning method\cite{Triangulation}. \\Polygon Triangulation is the decomposition of a polygon in a surface or plane, into a set of triangles, with the restriction that each triangle side is entirely shared by two adjacent triangles. In computer graphics, polygon triangulation algorithms are widely used for tessellating curved geometries. Triangulation can be applied to both convex and concave polygons. Concave polygons are those that have internal angles greater than 180 degrees, convex polygons are the opposite, internal angles sum 180 or less degrees. The Triangulation Theorem states that:
+geometry. It also seems to be the most investigated partitioning method\cite{Triangulation}. \\Polygon Triangulation is the decomposition of a polygon in a surface or plane, into a set of triangles, with the restriction that each triangle side is entirely shared by two adjacent triangles. In computer graphics, polygon triangulation algorithms are widely used for tessellating curved geometries. Triangulation can be applied to both convex and concave polygons. Concave polygons are those that have internal angles greater than 180 degrees, convex polygons are the opposite, internal angles sum 180 or less degrees. The Triangulation Theorem \cite{Theorem}s tates that:
 \begin{itemize}
     \item{Every simple polygon admits a triangulation}
 \item{Every triangulation of an n-gon has exactly $n-2$ triangles}
 \end{itemize}
 $$\includegraphics[scale=0.6]{Typeofpolygons}$$
-\subsection{Triangulation Approaches}
+\subsection{Triangulation Approaches}\cite{TriangulationApproaches}
     \subsubsection{\textbf{Non-Delaunay Algorithms}}
     \begin{itemize}
         \item{Greedy Triangulation}
@@ -108,7 +108,6 @@ $$\includegraphics[scale=0.6]{Typeofpolygons}$$
             \item Divide and Conquer Algorithm
         \end{itemize}
     \end{itemize}
-    
 
 \section{Metodology}
 \subsection{Delaunay Algorithms}
@@ -135,13 +134,13 @@ But, lets see how these diagrams are generated form scratch. First, we will plac
 
 \begin{figure}[H]
     \centering
-    \includegraphics[width=200,height=100,keepaspectratio]{DiagramGeneration.jpg}
+    \includegraphics[width=200,height=150,keepaspectratio]{DiagramGeneration.jpg}
     \caption{Voronoi Diagram Generation}
     \label{fig:VoronoiDiagram1}
 \end{figure}
     
 \subsection{Ear Clipping}
-An ear of a polygon is a triangle formed by three consecutive vertices $V_{i0},V_{i1},$ and $V_{i2}$ for which $V_{i1}$ is a convex vertex. The line segment from $V_{i0}$ to $V_{i2}$ lies completely inside the polygon, and no vertices of the polygon are inside the triangle other than its components. The line segment between $V_{i0}$ and $V_{i2}$ is a diagonal of the polygon. The vertex $V_{i1}$ is called the ear tip. A triangle has only one ear and can be any of the triangle's vertices. The Ear Clipping algorithm takes $O(n^2)$.
+An ear of a polygon is a triangle formed by three consecutive vertices $V_{i0},V_{i1},$ and $V_{i2}$ for which $V_{i1}$ is a convex vertex. The line segment from $V_{i0}$ to $V_{i2}$ lies completely inside the polygon, and no vertices of the polygon are inside the triangle other than its components. The line segment between $V_{i0}$ and $V_{i2}$ is a diagonal of the polygon. The vertex $V_{i1}$ is called the ear tip. A triangle has only one ear and can be any of the triangle's vertices. The Ear Clipping algorithm takes $O(n^2)$\cite{EarClipping}
 
 \subsection{Code Analysis}
 \begin{lstlisting}
@@ -214,7 +213,6 @@ Also with this last image of Totoro, according to the quantity of vertices it wi
 \includegraphics[scale=0.58]{Graphs.png}
 
 After conducting this part of the experiment, the results showed that the amount of vertices versus time can be different across different polygons based on the contour of the images. This is because there are images that, after enclosing them in a convex hull formed by the vertices, can be simple polygons more than others, that is, that have more edges, bends, curves, etcetera. So, the algorithm needs to check if the new triangle formed by the inclusion of a new vertex is a valid one or not. In synthesis, if a polygon has a lot of vertices, that means that the algorithm will take more time testing each of its vertices; therefore, taking more time to triangulate said polygon. In the last figure shows the graph corresponding to the Totoro image test, and can give a glimpse of the $n^2$ behaviour even though the line is not very steep.\\
-
 
 \bibliographystyle{plain}
 \bibliography{references}
